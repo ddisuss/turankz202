@@ -1,0 +1,997 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ТОО «ТУРАН KZ» — проектирование зданий и инженерных систем. Лицензия I категории №13003739. Реестр выполненных работ, услуги и контакты.">
+<title>ТУРАН KZ — Проектная компания</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f6f4ef'/%3E%3Cg fill='none' stroke='%23536b78' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M50 15 L65 28 L65 75 L50 75 Z'/%3E%3Cpath d='M35 35 L50 48 L50 75 L35 75 Z'/%3E%3Cpath d='M65 45 L75 55 L75 75 L65 75 Z'/%3E%3Cpath d='M25 50 L35 60 L35 75 L25 75 Z'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef;
+  --bg-2:#ffffff;
+  --bg-3:#efece4;
+  --white:#fff;
+  --ink:#1a1d21;
+  --muted:#6b7280;
+  --muted-2:#9ca3af;
+  --line:#e3dfd6;
+  --line-2:#d8d3c8;
+  --accent:#536b78;
+  --accent-light:#7a9ba8;
+  --accent-soft:rgba(83,107,120,.08);
+  --accent-glow:rgba(83,107,120,.18);
+  --error:#c17a6e;
+  --max:1240px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Inter,Arial,sans-serif;
+  line-height:1.55;
+  overflow-x:hidden;
+  position:relative;
+}
+body::before{
+  content:'';
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  background-image:
+    linear-gradient(rgba(83,107,120,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(83,107,120,.035) 1px,transparent 1px);
+  background-size:80px 80px;
+  pointer-events:none;
+  z-index:0;
+  mask-image:radial-gradient(ellipse at center,black 30%,transparent 95%);
+  -webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 95%);
+}
+.bg-orbs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.6;animation:orbFloat 22s ease-in-out infinite}
+.orb-1{width:700px;height:700px;background:radial-gradient(circle,rgba(122,155,168,.22),transparent 70%);top:-15%;right:-10%}
+.orb-2{width:600px;height:600px;background:radial-gradient(circle,rgba(83,107,120,.12),transparent 70%);bottom:10%;left:-15%;animation-delay:-8s}
+.orb-3{width:500px;height:500px;background:radial-gradient(circle,rgba(200,180,140,.15),transparent 70%);top:45%;right:15%;animation-delay:-16s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(60px,-40px) scale(1.1)}66%{transform:translate(-40px,40px) scale(.95)}}
+
+a{text-decoration:none;color:inherit}
+.container{width:min(var(--max),calc(100% - 64px));margin:auto;position:relative;z-index:1}
+img{max-width:100%;display:block}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideInRight{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:translateX(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes softGlow{0%,100%{box-shadow:0 0 0 0 var(--accent-glow)}50%{box-shadow:0 0 30px 4px var(--accent-glow)}}
+@keyframes checkmark{0%{transform:scale(0) rotate(-45deg);opacity:0}50%{transform:scale(1.2) rotate(-45deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-50px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(50px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.94);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+.stagger>*{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.stagger.visible>*{opacity:1;transform:translateY(0)}
+.stagger.visible>*:nth-child(1){transition-delay:.05s}
+.stagger.visible>*:nth-child(2){transition-delay:.12s}
+.stagger.visible>*:nth-child(3){transition-delay:.19s}
+.stagger.visible>*:nth-child(4){transition-delay:.26s}
+.stagger.visible>*:nth-child(5){transition-delay:.33s}
+.stagger.visible>*:nth-child(6){transition-delay:.4s}
+
+.header{height:82px;background:rgba(246,244,239,.85);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:box-shadow .3s,background .3s}
+.header.scrolled{box-shadow:0 4px 24px rgba(83,107,120,.08);background:rgba(255,255,255,.92)}
+.nav{height:100%;display:flex;align-items:center;gap:34px}
+.brand{width:112px;height:64px;display:flex;align-items:center;overflow:hidden;flex:none;transition:transform .3s}
+.brand:hover{transform:scale(1.04)}
+.brand img{height:58px;width:auto;max-width:108px;display:block;object-fit:contain}
+.nav-links{display:flex;gap:26px;align-items:center;margin-left:auto}
+.nav-links a,.nav-phone{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;position:relative}
+.nav-links a{color:#555b60;padding-bottom:4px;transition:color .3s}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:linear-gradient(90deg,var(--accent),var(--accent-light));transition:width .3s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{width:100%}
+.nav-phone{border-left:1px solid var(--line);padding-left:25px;transition:color .3s;color:var(--ink)}
+.nav-phone:hover{color:var(--accent)}
+.menu{display:none;border:0;background:none;padding:8px;cursor:pointer}
+.menu span{display:block;width:23px;height:1px;background:var(--ink);margin:5px;transition:transform .3s,opacity .3s}
+.menu.active span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.menu.active span:nth-child(2){opacity:0}
+.menu.active span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* ===== HERO + ФОН ===== */
+.hero{min-height:calc(100vh - 82px);display:flex;align-items:center;border-bottom:1px solid var(--line);position:relative;overflow:hidden;background:linear-gradient(180deg,#f6f4ef 0%,#f1ede4 100%)}
+.hero::before{
+  content:'';
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80');
+  background-size:cover;
+  background-position:center;
+  opacity:.08;
+  z-index:0;
+  mask-image:linear-gradient(180deg,black 0%,transparent 90%);
+  -webkit-mask-image:linear-gradient(180deg,black 0%,transparent 90%);
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center;padding:80px 0;position:relative;z-index:2}
+.eyebrow,.section-no{font-size:10px;letter-spacing:.22em;font-weight:800;color:var(--accent);text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before,.section-no::before{content:'';width:24px;height:1px;background:linear-gradient(90deg,var(--accent),transparent)}
+.hero h1{font:800 clamp(52px,6.5vw,90px)/.96 Manrope,Inter,sans-serif;letter-spacing:-.065em;margin:23px 0 28px;color:var(--ink)}
+.hero h1 span,h2 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{max-width:650px;color:var(--muted);font-size:17px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:34px 0 50px}
+.btn{min-height:52px;padding:14px 24px;border:1px solid var(--ink);display:inline-flex;align-items:center;justify-content:center;gap:20px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:800;transition:all .4s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden;cursor:pointer;border-radius:2px;background:transparent;color:var(--ink);font-family:inherit}
+.btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:left .6s}
+.btn:hover::before{left:100%}
+.btn-dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-dark:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(26,29,33,.2)}
+.btn-line{background:transparent}
+.btn-line:hover{background:var(--ink);color:#fff;transform:translateY(-3px);box-shadow:0 15px 35px rgba(26,29,33,.15)}
+.btn b{font-size:18px;transition:transform .3s}
+.btn:hover b{transform:translate(3px,-3px)}
+.stats{display:flex;border-top:1px solid var(--line-2);padding-top:26px;gap:50px}
+.stats div{display:grid;gap:2px}
+.stats strong{font:800 34px Manrope;color:var(--accent);transition:color .3s}
+.stats div:hover strong{color:var(--accent-light)}
+.stats span{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted-2);font-weight:600}
+.hero-media{min-height:600px;position:relative;display:flex;align-items:center;justify-content:center;padding-left:20px}
+.hero-media::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:85%;height:85%;background:radial-gradient(circle,var(--accent-glow),transparent 70%);filter:blur(50px);z-index:0;animation:softGlow 5s ease-in-out infinite}
+.hero-media img{max-width:100%;width:640px;max-height:620px;object-fit:contain;position:relative;z-index:1;animation:float 7s ease-in-out infinite;transition:transform .5s;filter:drop-shadow(0 25px 50px rgba(83,107,120,.2))}
+.hero-media:hover img{transform:scale(1.03)}
+.hero-label{position:absolute;bottom:20px;right:0;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border:1px solid var(--line-2);color:var(--ink);padding:18px 22px;min-width:200px;display:grid;gap:3px;animation:slideInRight .8s .6s both;z-index:2;border-radius:2px;box-shadow:0 15px 40px rgba(83,107,120,.12)}
+.hero-label::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,var(--accent-light),var(--accent))}
+.hero-label small,.license-info span,.contact-card small{font-size:8px;letter-spacing:.2em;color:var(--muted-2);font-weight:800}
+.hero-label b{font:800 22px Manrope;color:var(--ink)}
+.hero-label span{font-size:11px;color:var(--accent)}
+
+.intro,.license{background:var(--bg-2);border-bottom:1px solid var(--line);position:relative}
+.intro,.services,.license,.registry,.benefits,.contact{padding:120px 0}
+/* ===== УСЛУГИ + ФОН ===== */
+.services{background:var(--bg);position:relative;overflow:hidden}
+.services::before{
+  content:'';
+  position:absolute;top:0;right:0;width:60%;height:100%;
+  background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80');
+  background-size:cover;
+  background-position:center;
+  opacity:.07;
+  pointer-events:none;
+  mask-image:linear-gradient(90deg,transparent,black);
+  -webkit-mask-image:linear-gradient(90deg,transparent,black);
+}
+.benefits{background:var(--bg-2);position:relative;border-bottom:1px solid var(--line)}
+.registry{background:var(--bg-2)}
+.split,.section-head,.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:85px}
+.split h2,.section-head h2,.contact h2{font:800 clamp(39px,4.5vw,63px)/.98 Manrope,Inter,sans-serif;letter-spacing:-.055em;margin:18px 0 0;color:var(--ink)}
+.copy{padding-top:32px;max-width:620px}
+.copy .lead{font-size:21px;line-height:1.4;color:var(--ink)}
+.copy p{color:var(--muted)}
+.line-note{border-top:1px solid var(--line-2);margin-top:38px;padding-top:24px;display:flex;gap:20px;align-items:baseline}
+.line-note b{font:800 28px Manrope;background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+.line-note span{font-size:12px;color:var(--muted)}
+.section-head{align-items:end;margin-bottom:60px}
+.section-head>p{max-width:480px;color:var(--muted);margin:0}
+
+.about-media{margin-top:44px;border:1px solid var(--line-2);overflow:hidden;position:relative;border-radius:2px;box-shadow:0 20px 45px rgba(83,107,120,.1)}
+.about-media img{width:100%;height:300px;object-fit:cover;transition:transform .8s}
+.about-media:hover img{transform:scale(1.06)}
+.about-media::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,transparent 50%,rgba(26,29,33,.25));pointer-events:none}
+
+.service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.service-grid article{background:var(--bg-2);border:1px solid var(--line);transition:all .5s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden;display:flex;flex-direction:column;border-radius:4px}
+.service-grid article::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,var(--accent-soft),transparent 60%);opacity:0;transition:opacity .5s;z-index:1;pointer-events:none}
+.service-grid article:hover::before{opacity:1}
+.service-grid article:hover{transform:translateY(-6px);box-shadow:0 25px 50px rgba(83,107,120,.15);border-color:var(--accent-light)}
+.service-img{width:100%;height:180px;overflow:hidden;position:relative;flex-shrink:0}
+.service-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.service-grid article:hover .service-img img{transform:scale(1.08)}
+.service-img::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:50%;background:linear-gradient(transparent,rgba(255,255,255,.6));pointer-events:none}
+.service-body{padding:28px 30px 32px;display:flex;flex-direction:column;flex:1;position:relative;z-index:2}
+.service-grid article>span{font:700 11px Manrope;color:var(--muted-2);letter-spacing:.1em}
+.service-icon{width:56px;height:56px;margin:16px 0 18px;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);border:1px solid var(--line);border-radius:50%;transition:all .5s;color:var(--accent);position:relative}
+.service-grid article:hover .service-icon{background:linear-gradient(135deg,var(--accent),var(--accent-light));color:#fff;transform:scale(1.08) rotate(-5deg);border-color:transparent;box-shadow:0 10px 25px var(--accent-glow)}
+.service-icon svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.service-grid h3{font:800 22px/1.15 Manrope;margin:0 0 13px;max-width:520px;transition:color .3s;color:var(--ink)}
+.service-grid article:hover h3{color:var(--accent)}
+.service-grid p{font-size:13px;color:var(--muted);max-width:480px;margin:0}
+.service-grid .wide{grid-column:1/-1}
+.service-grid .wide .service-img{height:240px}
+.service-grid .wide .service-body{padding:32px 44px 38px}
+
+/* ===== ПОЧЕМУ МЫ + ФОН ===== */
+.dark{background:linear-gradient(180deg,#efece4 0%,#e8e3d7 100%);padding:120px 0;position:relative;border-bottom:1px solid var(--line);overflow:hidden}
+.dark::before{
+  content:'';
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&q=80');
+  background-size:cover;
+  background-position:center;
+  opacity:.06;
+  pointer-events:none;
+}
+.dark::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70%;height:70%;background:radial-gradient(circle,var(--accent-glow),transparent 60%);filter:blur(80px);opacity:.5;pointer-events:none}
+.dark .section-no{color:var(--accent)}
+.dark .section-head>p{color:var(--muted)}
+.adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:1}
+.adv-grid>div{min-height:280px;padding:32px;background:var(--bg-2);border:1px solid var(--line);transition:all .5s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden;border-radius:4px}
+.adv-grid>div::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,var(--accent-soft),transparent 60%);opacity:0;transition:opacity .5s}
+.adv-grid>div:hover::before{opacity:1}
+.adv-grid>div:hover{transform:translateY(-6px);box-shadow:0 25px 50px rgba(83,107,120,.15);border-color:var(--accent-light)}
+.adv-grid b{font:700 11px Manrope;color:var(--muted-2);letter-spacing:.1em}
+.adv-icon{width:56px;height:56px;margin:20px 0 20px;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);border:1px solid var(--line);border-radius:50%;transition:all .5s;color:var(--accent);position:relative}
+.adv-grid>div:hover .adv-icon{background:linear-gradient(135deg,var(--accent),var(--accent-light));color:#fff;transform:scale(1.08) rotate(5deg);border-color:transparent;box-shadow:0 10px 25px var(--accent-glow)}
+.adv-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.adv-grid h3{font:800 21px/1.15 Manrope;margin:0 0 13px;position:relative;color:var(--ink)}
+.adv-grid p{font-size:13px;color:var(--muted);margin:0;position:relative}
+
+.benefits-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.benefit-card{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:32px 26px;transition:all .5s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden}
+.benefit-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,var(--accent-soft),transparent 60%);opacity:0;transition:opacity .5s}
+.benefit-card:hover::before{opacity:1}
+.benefit-card:hover{transform:translateY(-6px);box-shadow:0 25px 50px rgba(83,107,120,.15);border-color:var(--accent-light)}
+.benefit-num{font:800 48px Manrope;background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin-bottom:18px;position:relative}
+.benefit-card h3{font:800 17px/1.2 Manrope;margin:0 0 12px;color:var(--ink);position:relative}
+.benefit-card p{font-size:12px;color:var(--muted);margin:0;position:relative;line-height:1.5}
+
+.license-info{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;box-shadow:0 15px 40px rgba(83,107,120,.06)}
+.license-info div{padding:26px 24px;background:var(--bg-2);display:grid;gap:6px;transition:background .3s}
+.license-info div:hover{background:var(--accent-soft)}
+.license-info b{font:700 15px Manrope;color:var(--ink);line-height:1.4}
+.license-info span{color:var(--muted-2)}
+
+/* ===== РЕЕСТР + ФОН ===== */
+.registry{background:var(--bg-2);position:relative;overflow:hidden}
+.registry::before{
+  content:'';
+  position:absolute;top:0;right:0;width:60%;height:100%;
+  background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80');
+  background-size:cover;
+  background-position:center;
+  opacity:.06;
+  pointer-events:none;
+  mask-image:linear-gradient(90deg,transparent,black);
+  -webkit-mask-image:linear-gradient(90deg,transparent,black);
+}
+.registry .container{position:relative;z-index:1}
+.registry-tools{display:flex;gap:14px;margin-bottom:22px}
+.registry-tools label{display:grid;gap:8px}
+.registry-tools label:first-child{flex:1}
+.registry-tools span{font-size:8px;font-weight:800;letter-spacing:.2em;color:var(--muted-2)}
+.registry-tools input,.registry-tools select{height:52px;border:1px solid var(--line-2);background:var(--bg);padding:0 16px;font:500 13px Inter;color:var(--ink);outline:none;transition:all .3s;border-radius:2px}
+.registry-tools input::placeholder{color:var(--muted-2)}
+.registry-tools input:focus,.registry-tools select:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px var(--accent-glow)}
+.table-wrap{border:1px solid var(--line);background:#fff;overflow:auto;border-radius:4px;box-shadow:0 15px 40px rgba(83,107,120,.08)}
+table{width:100%;border-collapse:collapse;min-width:900px}
+thead{background:linear-gradient(135deg,var(--ink),#2d333a);color:#fff}
+th{font-size:9px;letter-spacing:.15em;text-transform:uppercase;text-align:left;padding:18px 18px;font-weight:800;color:#fff;border-bottom:1px solid var(--line-2)}
+td{padding:20px 18px;border-top:1px solid var(--line);vertical-align:top;font-size:12px;color:var(--muted);transition:all .3s}
+tbody tr{transition:all .3s}
+tbody tr:hover{background:var(--accent-soft)}
+tbody tr:hover td{color:var(--ink)}
+td:first-child{width:55px}
+td:nth-child(2){width:52%}
+td:nth-child(3){width:29%}
+td strong{display:block;font-size:13px;line-height:1.5;color:var(--ink);font-weight:600}
+.num{font:700 11px Manrope!important;color:var(--muted-2)!important}
+.date{white-space:nowrap;color:var(--accent)}
+.registry-footer{display:flex;align-items:center;gap:14px;padding-top:28px}
+.registry-footer b{font:800 40px Manrope;background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.registry-footer span{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-2)}
+.registry-footer .hint{margin-left:auto;text-transform:none;letter-spacing:0;color:var(--muted)}
+tbody tr{animation:fadeIn .4s ease both}
+
+/* ===== КОНТАКТЫ + ФОН ===== */
+.contact{background:linear-gradient(180deg,#e8e3d7 0%,#ddd6c5 100%);position:relative;overflow:hidden;border-top:1px solid var(--line)}
+.contact::before{
+  content:'';
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background-image:url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1600&q=80');
+  background-size:cover;
+  background-position:center;
+  opacity:.08;
+  pointer-events:none;
+}
+.contact::after{content:'';position:absolute;bottom:-30%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,var(--accent-glow),transparent 70%);border-radius:50%;animation:float 10s ease-in-out infinite;pointer-events:none;filter:blur(80px)}
+.contact .section-no{color:var(--accent)}
+.contact h2{margin-bottom:20px;color:var(--ink)}
+.contact p{color:var(--muted);max-width:520px}
+.contact-grid{position:relative;z-index:1;align-items:start}
+.contact-left{padding-top:20px}
+.contact-left p{margin-bottom:32px}
+.contact-info-list{display:grid;gap:14px;margin-top:36px}
+.contact-info-item{display:flex;gap:16px;align-items:center;padding:16px 20px;background:rgba(255,255,255,.75);border:1px solid var(--line);border-radius:4px;transition:all .4s}
+.contact-info-item:hover{background:#fff;transform:translateX(6px);box-shadow:0 15px 35px rgba(83,107,120,.1);border-color:var(--accent-light)}
+.contact-info-item .mini-icon{width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);border-radius:50%;color:var(--accent);transition:all .4s}
+.contact-info-item:hover .mini-icon{background:linear-gradient(135deg,var(--accent),var(--accent-light));color:#fff;transform:scale(1.05) rotate(-5deg)}
+.contact-info-item .mini-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.contact-info-item small{display:block;font-size:8px;font-weight:800;letter-spacing:.2em;color:var(--muted-2);margin-bottom:3px}
+.contact-info-item a,.contact-info-item span{font:700 15px Manrope;color:var(--ink);transition:color .3s}
+.contact-info-item a:hover{color:var(--accent)}
+
+.contact-card{background:#fff;color:var(--ink);padding:40px;display:grid;gap:22px;transition:transform .4s,box-shadow .4s;border-radius:6px;position:relative;overflow:hidden;box-shadow:0 30px 70px rgba(83,107,120,.18)}
+.contact-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--accent-light),var(--accent))}
+.contact-card:hover{transform:translateY(-4px);box-shadow:0 40px 80px rgba(83,107,120,.25)}
+.form-title{font:800 22px Manrope;color:var(--ink);margin:0 0 6px;letter-spacing:-.02em}
+.form-subtitle{font-size:13px;color:var(--muted);margin:0 0 24px;line-height:1.5}
+.contact-form{display:grid;gap:16px}
+.form-field{display:grid;gap:8px;position:relative}
+.form-field label{font-size:9px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--muted-2)}
+.form-field label .req{color:var(--accent)}
+.form-field input{
+  height:52px;border:1px solid var(--line-2);background:var(--bg);padding:0 16px;
+  font:500 13.5px Inter;color:var(--ink);outline:none;transition:all .3s;border-radius:2px;
+  font-family:inherit;width:100%;
+}
+.form-field input::placeholder{color:var(--muted-2)}
+.form-field input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px var(--accent-glow)}
+.form-field.error input{border-color:var(--error);background:rgba(193,122,110,.04)}
+.form-field.error label{color:var(--error)}
+.form-error-msg{font-size:11px;color:var(--error);margin-top:2px;display:none}
+.form-field.error .form-error-msg{display:block;animation:fadeIn .3s ease}
+.contact-form .btn{margin-top:8px}
+.privacy{font-size:10px;color:var(--muted-2);line-height:1.5;margin-top:4px;text-align:center}
+
+.form-success{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:40px;text-align:center;opacity:0;pointer-events:none;transition:opacity .5s ease;
+  z-index:5;
+}
+.form-success.show{opacity:1;pointer-events:auto}
+.form-success-icon{
+  width:76px;height:76px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent-light));
+  display:flex;align-items:center;justify-content:center;margin-bottom:22px;
+  box-shadow:0 15px 40px var(--accent-glow);
+  animation:softGlow 2s ease-in-out infinite;
+}
+.form-success-icon svg{width:38px;height:38px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;animation:checkmark .6s ease .2s both}
+.form-success h3{font:800 24px Manrope;color:var(--ink);margin:0 0 12px;letter-spacing:-.02em}
+.form-success p{font-size:13px;color:var(--muted);max-width:340px;margin:0 0 26px;line-height:1.5}
+.form-success .btn{padding:13px 28px;min-width:auto;width:auto}
+
+.footer{min-height:110px;display:flex;align-items:center;justify-content:space-between;gap:30px;font-size:10px;color:var(--muted-2);position:relative;z-index:1;padding:30px 0;background:var(--bg-2);border-top:1px solid var(--line)}
+.footer-brand{display:flex;align-items:center;gap:16px}
+.footer-brand img{height:62px;width:auto;max-width:90px;object-fit:contain;transition:transform .3s}
+.footer-brand img:hover{transform:scale(1.05)}
+.footer-brand span{border-left:1px solid var(--line);padding-left:16px;color:var(--muted)}
+.footer small{color:var(--muted-2)}
+.footer>a{font-weight:800;transition:color .3s;color:var(--ink)}
+.footer>a:hover{color:var(--accent)}
+
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-light));z-index:100;width:0;transition:width .1s;box-shadow:0 0 15px var(--accent-glow)}
+
+@media(max-width:950px){
+.container{width:min(var(--max),calc(100% - 34px))}
+.nav-links,.nav-phone{display:none}
+.menu{display:block;margin-left:auto}
+.hero-grid,.split,.section-head,.contact-grid{grid-template-columns:1fr;gap:35px}
+.hero{min-height:auto}
+.hero-grid{padding:65px 0}
+.hero-media{padding-left:0;min-height:390px}
+.hero-media img{max-height:390px}
+.intro,.services,.license,.registry,.dark,.benefits,.contact{padding:80px 0}
+.copy{padding-top:0}
+.adv-grid{grid-template-columns:repeat(2,1fr)}
+.benefits-grid{grid-template-columns:repeat(2,1fr)}
+.header{height:70px}
+.brand{height:56px;width:100px}
+.brand img{height:52px;max-width:94px}
+.nav.open .nav-links{position:absolute;top:70px;left:17px;right:17px;background:#fff;border:1px solid var(--line-2);padding:20px;flex-direction:column;align-items:flex-start;box-shadow:0 18px 35px rgba(83,107,120,.15);animation:fadeUp .3s ease;border-radius:4px}
+.contact-card{padding:32px 26px}
+}
+@media(max-width:600px){
+.hero h1{font-size:46px}
+.hero p{font-size:15px}
+.stats{gap:17px;justify-content:space-between}
+.stats strong{font-size:24px}
+.stats span{font-size:8px}
+.hero-media{min-height:280px}
+.hero-media img{max-height:285px}
+.hero-label{bottom:0;right:auto;left:0}
+.service-grid,.adv-grid,.benefits-grid{grid-template-columns:1fr}
+.service-grid .wide{grid-column:auto}
+.service-grid article{min-height:auto}
+.service-grid h3{font-size:19px}
+.adv-grid>div{min-height:220px}
+.license-info{grid-template-columns:1fr}
+.registry-tools{flex-direction:column}
+.registry-footer{flex-wrap:wrap}
+.registry-footer .hint{width:100%;margin-left:0}
+.footer{padding:27px 0;flex-wrap:wrap}
+.footer-brand{align-items:flex-start}
+.footer-brand span{font-size:9px}
+.split h2,.section-head h2,.contact h2{font-size:38px}
+.contact-card{padding:28px 22px}
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<header class="header" id="header">
+  <div class="container nav">
+    <a class="brand" href="#top"><img src="assets/logo.png" alt="ТУРАН KZ"></a>
+    <nav class="nav-links">
+      <a href="#about">О компании</a>
+      <a href="#services">Услуги</a>
+      <a href="#benefits">Выгода</a>
+      <a href="#license">Лицензия</a>
+      <a href="#registry">Реестр работ</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="nav-phone" href="tel:+77026662980">+7 702 666 2980</a>
+    <button class="menu" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="reveal-left">
+      <div class="eyebrow">ТУРАН KZ / ПРОЕКТНАЯ КОМПАНИЯ</div>
+      <h1>Проектные решения<br><span>для реальных объектов.</span></h1>
+      <p>Проектирование зданий и инженерных систем с 2013 года. Безопасность, функциональность и соответствие нормативам — в основе каждого проекта.</p>
+      <div class="hero-actions">
+        <a class="btn btn-dark" href="#registry">Реестр выполненных работ <b>↘</b></a>
+        <a class="btn btn-line" href="#contacts">Обсудить проект</a>
+      </div>
+      <div class="stats">
+        <div><strong data-count="12" data-suffix="+">0+</strong><span>лет практики</span></div>
+        <div><strong>I</strong><span>категория лицензии</span></div>
+        <div><strong data-count="50" data-suffix="+">0+</strong><span>выполненных работ</span></div>
+      </div>
+    </div>
+    <div class="hero-media reveal-right">
+      <img src="assets/p1_img2.png" alt="Проектное решение ТУРАН KZ">
+      <div class="hero-label">
+        <small>ЛИЦЕНЗИЯ</small>
+        <b>№13003739</b>
+        <span>I категория · РК</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="intro" id="about">
+  <div class="container split">
+    <div class="reveal-left">
+      <div class="section-no">01 / О КОМПАНИИ</div>
+      <h2>Инженерия,<br><em>которая работает.</em></h2>
+      <div class="about-media">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" alt="Проектирование">
+      </div>
+    </div>
+    <div class="copy reveal-right">
+      <p class="lead">ТОО «ТУРАН KZ» — казахстанская инженерная компания, специализирующаяся на проектировании зданий и инженерных систем.</p>
+      <p>Мы создаём безопасные, функциональные и современные объекты, соответствующие стандартам и требованиям заказчиков. Наша цель — обеспечить устойчивое будущее через инновационные и надёжные инженерные решения.</p>
+      <p><b style="color:var(--ink)">Наш подход.</b> Мы стремимся к совершенству в каждом проекте, используя передовые технологии и глубокие знания в области инженерии.</p>
+      <p><b style="color:var(--ink)">Наши ценности.</b> Безопасность, функциональность и соответствие высоким стандартам — основа нашей работы и залог успеха наших клиентов.</p>
+      <div class="line-note">
+        <b>Более 12 лет</b>
+        <span>успешной практики в проектировании и реализации инженерных решений.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head">
+      <div class="reveal-left">
+        <div class="section-no">02 / УСЛУГИ</div>
+        <h2>Что мы<br><em>предлагаем.</em></h2>
+      </div>
+      <p class="reveal-right">Полный спектр проектных услуг — от архитектурного проектирования до сопровождения сдачи объекта в эксплуатацию.</p>
+    </div>
+    <div class="service-grid stagger">
+      <article>
+        <div class="service-img"><img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&q=80" alt=""></div>
+        <div class="service-body">
+          <span>01</span>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6M9 12h.01M15 12h.01"/></svg></div>
+          <h3>Архитектурное и конструктивное проектирование</h3>
+          <p>Разработка комплексных решений для зданий любой сложности.</p>
+        </div>
+      </article>
+      <article>
+        <div class="service-img"><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80" alt=""></div>
+        <div class="service-body">
+          <span>02</span>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg></div>
+          <h3>Инженерные сети</h3>
+          <p>Проектирование систем ВК, ОВ, ЭО, ТС для оптимальной работы объектов.</p>
+        </div>
+      </article>
+      <article>
+        <div class="service-img"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" alt=""></div>
+        <div class="service-body">
+          <span>03</span>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></div>
+          <h3>Подготовка ПСД и смет</h3>
+          <p>Полный пакет проектно-сметной документации.</p>
+        </div>
+      </article>
+      <article>
+        <div class="service-img"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80" alt=""></div>
+        <div class="service-body">
+          <span>04</span>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M2 18h20M4 18v-4a8 8 0 0 1 16 0v4M12 6V3M9 18v-3M15 18v-3"/></svg></div>
+          <h3>Технический надзор</h3>
+          <p>Контроль за соблюдением проектных решений на всех этапах строительства.</p>
+        </div>
+      </article>
+      <article class="wide">
+        <div class="service-img"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80" alt=""></div>
+        <div class="service-body">
+          <span>05</span>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-5"/></svg></div>
+          <h3>Сопровождение до сдачи в эксплуатацию</h3>
+          <p>Полная поддержка проекта до его успешного завершения.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+    <div class="section-head">
+      <div class="reveal-left">
+        <div class="section-no light">03 / ПОЧЕМУ ВЫБИРАЮТ НАС</div>
+        <h2>Точность.<br>Ответственность.<br>Результат.</h2>
+      </div>
+      <p class="reveal-right">Безопасность, функциональность и соответствие высоким стандартам — основа нашей работы.</p>
+    </div>
+    <div class="adv-grid stagger">
+      <div>
+        <b>01</b>
+        <div class="adv-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Опытная команда</h3>
+        <p>Команда инженеров и проектировщиков с многолетним опытом.</p>
+      </div>
+      <div>
+        <b>02</b>
+        <div class="adv-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5L17 22l-5-3-5 3 1.5-8.5"/></svg></div>
+        <h3>Лицензия I категории</h3>
+        <p>Официальное право на проектирование любой сложности — подтверждение нашей квалификации и надёжности.</p>
+      </div>
+      <div>
+        <b>03</b>
+        <div class="adv-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></div>
+        <h3>Индивидуальный подход</h3>
+        <p>Гибкость и адаптация к уникальным требованиям каждого клиента.</p>
+      </div>
+      <div>
+        <b>04</b>
+        <div class="adv-icon"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Соответствие нормативам</h3>
+        <p>Все проекты ТОО «ТУРАН KZ» проходят обязательную государственную и (или) частную экспертизу.</p>
+      </div>
+      <div>
+        <b>05</b>
+        <div class="adv-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Надёжные сроки</h3>
+        <p>Прозрачное планирование и соблюдение бюджета проекта.</p>
+      </div>
+      <div>
+        <b>06</b>
+        <div class="adv-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg></div>
+        <h3>Современные технологии</h3>
+        <p>Использование 3D и других передовых программных решений.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits" id="benefits">
+  <div class="container">
+    <div class="section-head">
+      <div class="reveal-left">
+        <div class="section-no">04 / ВАША ВЫГОДА</div>
+        <h2>Что вы получаете,<br><em>работая с нами.</em></h2>
+      </div>
+      <p class="reveal-right">Выбирая ТОО «ТУРАН KZ», вы получаете не просто исполнителя, а надёжного партнёра, который гарантирует качество, сроки и прозрачность на всех этапах проекта.</p>
+    </div>
+    <div class="benefits-grid stagger">
+      <div class="benefit-card">
+        <div class="benefit-num">01</div>
+        <h3>Гарантия соответствия проекту</h3>
+        <p>Точное выполнение всех требований и стандартов.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">02</div>
+        <h3>Планирование и контроль бюджета</h3>
+        <p>Эффективное управление финансовыми ресурсами.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">03</div>
+        <h3>Сдача в срок</h3>
+        <p>Соблюдение установленных дедлайнов без задержек.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">04</div>
+        <h3>Полное сопровождение</h3>
+        <p>Поддержка на всех этапах, от идеи до сдачи в эксплуатацию.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="license" id="license">
+  <div class="container split">
+    <div class="reveal-left">
+      <div class="section-no">05 / ЛИЦЕНЗИЯ</div>
+      <h2>Государственная<br><em>лицензия I категории.</em></h2>
+    </div>
+    <div class="license-info reveal-right">
+      <div><span>НОМЕР</span><b>13003739</b></div>
+      <div><span>ДАТА ВЫДАЧИ</span><b>08.11.2024</b></div>
+      <div><span>ПЕРВИЧНАЯ ВЫДАЧА</span><b>07.02.2013</b></div>
+      <div><span>ЛИЦЕНЗИРУЕМЫЙ ВИД</span><b>Проектная деятельность</b></div>
+      <div><span>БИН</span><b>121240018432</b></div>
+      <div><span>КАТЕГОРИЯ</span><b>I категория · класс 1</b></div>
+      <div><span>ЛИЦЕНЗИАР</span><b>Управление градостроительного контроля г. Алматы</b></div>
+      <div><span>МЕСТО ВЫДАЧИ</span><b>г. Алматы, Казахстан</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="registry" id="registry">
+  <div class="container">
+    <div class="section-head">
+      <div class="reveal-left">
+        <div class="section-no">06 / ПОРТФОЛИО</div>
+        <h2>Реестр<br><em>выполненных работ.</em></h2>
+      </div>
+      <p class="reveal-right">Более 50 проектных работ и услуг, выполненных ТОО «ТУРАН KZ» с 2014 по 2026 год.</p>
+    </div>
+    <div class="registry-tools reveal">
+      <label><span>ПОИСК</span><input id="search" type="search" placeholder="По объекту или заказчику…"></label>
+      <label><span>ГОД</span><select id="year"><option value="all">Все годы</option></select></label>
+    </div>
+    <div class="table-wrap reveal-scale">
+      <table>
+        <thead><tr><th>№</th><th>Объект / услуга</th><th>Заказчик</th><th>Дата договора</th></tr></thead>
+        <tbody id="registryBody"></tbody>
+      </table>
+    </div>
+    <div class="registry-footer reveal">
+      <b id="count">50+</b><span>проектов и услуг в реестре</span>
+      <span class="hint">Поиск работает по названию объекта и заказчику</span>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacts">
+  <div class="container contact-grid">
+    <div class="contact-left reveal-left">
+      <div class="section-no light">07 / КОНТАКТЫ</div>
+      <h2>Обсудим<br>ваш проект.</h2>
+      <p>Инженерные решения, в которых можно быть уверенным. Свяжитесь с нами — обсудим ваш проект сегодня.</p>
+      <div class="contact-info-list">
+        <div class="contact-info-item">
+          <div class="mini-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><small>ТЕЛЕФОН / WHATSAPP</small><a href="tel:+77026662980">+7 702 666 2980</a></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="mini-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+          <div><small>E-MAIL</small><a href="mailto:turankz2030@mail.ru">turankz2030@mail.ru</a></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="mini-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><small>АДРЕС</small><span>г. Караганда, ул. Ермекова 26/2, офис 118</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-card reveal-right">
+      <h3 class="form-title">Оставить заявку</h3>
+      <p class="form-subtitle">Заполните форму — мы свяжемся с вами в течение рабочего дня.</p>
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/mrpbgane" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="Новая заявка с сайта ТУРАН KZ">
+        <div class="form-field">
+          <label>Ваше имя <span class="req">*</span></label>
+          <input type="text" name="name" placeholder="Иван Иванов" required>
+          <div class="form-error-msg">Пожалуйста, укажите ваше имя</div>
+        </div>
+        <div class="form-field">
+          <label>Телефон <span class="req">*</span></label>
+          <input type="tel" name="phone" placeholder="+7 ___ ___ __ __" required>
+          <div class="form-error-msg">Укажите корректный номер телефона</div>
+        </div>
+        <div class="form-field">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="example@mail.ru">
+          <div class="form-error-msg">Введите корректный email</div>
+        </div>
+        <button type="submit" class="btn btn-dark">Отправить заявку <b>↗</b></button>
+        <div class="privacy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</div>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-icon">
+          <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <h3>Заявка отправлена!</h3>
+        <p>Спасибо за обращение. Мы свяжемся с вами в течение рабочего дня.</p>
+        <button class="btn btn-dark" type="button" id="resetForm">Отправить ещё одну</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer">
+    <div class="footer-brand">
+      <img src="assets/logo.png" alt="ТУРАН KZ">
+      <span>Проектные решения для устойчивого<br>и безопасного строительства.</span>
+    </div>
+    <div>© 2026 ТОО «ТУРАН KZ»<br><small>Лицензия №13003739 · I категория</small></div>
+    <a href="#top">Наверх ↑</a>
+  </div>
+</footer>
+
+<script>
+const rows = [
+[1,'Разработка ПСД: инженерные сети водопровод и канализация, с государственной экспертизой — реабилитационный центр в Каркаралинске','КГУ «Реабилитационный центр для инвалидов Карагандинской области»','25.07.2014'],
+[2,'ПСД по пожарной безопасности и установке пожарной сигнализации дома культуры Актогайского района','КГПК «Актогайский культурно-досуговый центр»','22.04.2014'],
+[3,'ПСД на капитальный ремонт нижней галереи от рабочей башни СОБа №2 к зерноскладу','ТОО «Астық қоймалары»','30.05.2014'],
+[4,'ПСД на монтаж автоматической сигнализации для 2-этажного здания детского сада с госэкспертизой','ГККП «Михайловский детский сад “Колокольчик”»','04.03.2014'],
+[5,'ПСД на текущий ремонт здания','КГКП «Шахтинский детско-юношеский центр»','10.12.2014'],
+[6,'ПСД на средний ремонт внутрипоселковых дорог Торангалыкского сельского округа','ГУ «Аппарат акима Торангалыкского сельского округа»','10.10.2014'],
+[7,'ПСД на средний ремонт внутрипоселковых дорог Кусакского сельского округа','ГУ «Аппарат акима Кусакского сельского округа Актогайского района»','10.10.2014'],
+[8,'ПСД на средний ремонт внутрипоселковых дорог сельского округа Тасарал','ГУ «Аппарат акима Тасаралского сельского округа»','14.11.2014'],
+[9,'ПСД на средний ремонт внутрипоселковых дорог п. Сарышаган','ГУ «Аппарат акима поселка Сарышаган»','10.10.2014'],
+[10,'ПСД на средний ремонт внутрипоселковых дорог п. Шашубай','ГУ «Аппарат акима поселка Шашубай Актогайского района»','10.10.2014'],
+[11,'ПСД: реконструкция кровли склада готовой продукции АО ИП «Эфес Казахстан»','АО ИП «Эфес Казахстан»','17.07.2015'],
+[12,'ПСД: капитальный ремонт кровли, крыльца, фасада и благоустройство городской больницы №1 Караганды','ТОО «Аква Рем»','02.06.2014'],
+[13,'ПСД: строительство животноводческого комплекса в п. Бесоба','ТОО «Северно-заготовительный центр “Абайский”»','01.07.2015'],
+[14,'ПСД на текущий ремонт кровли','Карагандинский филиал РГКП «Военно-техническая школа Министерства обороны РК»','04.06.2015'],
+[15,'ПСД на капитальный ремонт','Карагандинский филиал РГКП «Военно-техническая школа Министерства обороны РК»','04.06.2015'],
+[16,'ПСД на капитальный ремонт уличного освещения с. Егиндыбулак','ГУ «Аппарат акима села Егиндыбулак»','10.03.2015'],
+[17,'ПСД на текущий ремонт внутрипоселковых автомобильных дорог с. Егиндыбулак','ГУ «Аппарат акима села Егиндыбулак»','30.04.2015'],
+[18,'ПСД на капитальный ремонт здания аппарата акима Актогайского района','ГУ «Аппарат акима Актогайского района Карагандинской области»','18.06.2015'],
+[19,'Государственная экспертиза РП: инженерные сети водопровода и канализации, две скважины к зданиям реабилитационного центра','КГУ «Реабилитационный центр для инвалидов Карагандинской области»','25.07.2014'],
+[20,'ПСД на средний ремонт внутрипоселковых дорог','ГУ «Аппарат акима Сарытерекского сельского округа»','08.01.2015'],
+[21,'ПСД на текущий ремонт водопроводной системы с. Егиндыбулак','ГУ «Аппарат акима села Егиндыбулак»','18.11.2015'],
+[22,'ПСД: капитальный ремонт кровли жилого дома и теплового узла в г. Абай; реконструкция кровли и теплового узла','ТОО «Аква Рем»','04.06.2015'],
+[23,'ПСД: реконструкция кровли и ремонт подъездов жилого дома по ул. 40 лет Победы','ТОО «Альбахус»','01.04.2016'],
+[24,'Авторский надзор: капитальный ремонт здания Государственного архива Аккольского района','КГУ «Государственный архив Аккольского района»','08.08.2016'],
+[25,'ПСД с прохождением госэкспертизы по адресу ул. Воинов-Интернационалистов, 14, здание АСК','АО «Республиканская телерадиокорпорация “Казахстан”»','11.07.2016'],
+[26,'Корректировка ПСД: капитальный ремонт здания поликлиники №1 г. Балхаш','ТОО «Альбахус»','22.08.2016'],
+[27,'ПСД: галерея для установки транспортеров на территории птицефабрики «Курма»','ТОО «Агрофирма Курма»','13.08.2016'],
+[28,'ПСД по реконструкции кровли по адресу: г. Шахтинск, ул. 40 лет Победы, 85','КСК «Салем и К»','01.04.2016'],
+[29,'ПСД подключения здания гостиницы к централизованным сетям отопления','ТОО «ALKO-A»','18.11.2016'],
+[30,'Авторский надзор: реконструкция кровли и теплового узла жилого дома в г. Абай','ТОО «Абай Көркем»','05.10.2016'],
+[31,'ПСД: капитальный ремонт внутренних помещений детского дома для детей с ограниченными возможностями','ТОО «Альбахус»','17.01.2016'],
+[32,'Рабочий проект и авторский надзор: реконструкция кровли жилого дома в г. Шахтинск','ТОО «Центр модернизации жилищного фонда Карагандинской области»','08.09.2016'],
+[33,'ПСД: строительство 12-квартирного двухэтажного жилого дома в с. Актогай','ТОО «КОНЭС»','13.07.2017'],
+[34,'Корректировка ПСД по объекту на ул. Сейфуллина, 40','РГП «Национальный центр экспертизы лекарственных средств...»','20.12.2017'],
+[35,'Авторский надзор: галерея для установки транспортеров на птицефабрике «Курма»','ТОО «Агрофирма Курма»','01.02.2017'],
+[36,'ПСД: капитальный ремонт 7 зданий школ Бухар-Жырауского района','ТОО «Альбахус»','14.11.2017'],
+[37,'ПСД: эскизный проект и рабочий проект','ТОО «Евразия LTD»','27.03.2018'],
+[38,'ПСД с положительным заключением госэкспертизы: капитальный ремонт, кровля и окна СШ №13, г. Жезказган','ТОО «Альбахус»','09.04.2018'],
+[39,'ПСД с положительным заключением госэкспертизы: капитальный ремонт, кровля и окна СШ №2, с. Кенгир','ТОО «Альбахус»','09.04.2018'],
+[40,'ПСД с положительным заключением госэкспертизы: капитальный ремонт СШ №2, г. Жезказган','ТОО «Альбахус»','09.04.2018'],
+[41,'ПСД с положительным заключением госэкспертизы: капитальный ремонт СШ Жарык','ТОО «Альбахус»','05.03.2018'],
+[42,'ПСД с положительным заключением госэкспертизы: капитальный ремонт зданий отдела образования Бухар-Жырауского района','ТОО «Альбахус»','14.11.2018'],
+[43,'Рабочий проект «Овощехранилище» в Абайском районе Карагандинской области','Мамедов Ахмед Эфенди Оглы','14.12.2018'],
+[44,'Авторский надзор: реконструкция и модернизация металлических сооружений и грузоподъемных механизмов областного драмтеатра им. С. Сейфуллина','ТОО «КОНЭС»','10.09.2019'],
+[45,'Авторский надзор: строительство складских помещений для спортинвентаря и технического оборудования в п. Нура','ГУ «Отдел строительства Нуринского района»','08.07.2022'],
+[46,'Авторский надзор: строительство крытого хоккейного корта в п. Нура','ГУ «Отдел строительства Нуринского района»','28.07.2022'],
+[47,'ПСД: устройство фундамента под мельницу на обогатительной фабрике Аяк-Кождан','ТОО «Fonet Er-Tai Ak Mining»','18.04.2022'],
+[48,'Авторский надзор: реконструкция и модернизация металлических сооружений и грузоподъемных механизмов областного драмтеатра им. С. Сейфуллина','ТОО «КОНЭС»','10.09.2019'],
+[49,'Корректировка ПСД: строительство центральной котельной в с. Новоишимское','ТОО «КОНЭС»','09.10.2020'],
+[50,'Рабочий проект: строительство склада для хранения муки в г. Жезказган','ТОО «Honmil Group»','09.08.2021'],
+[51,'Авторский надзор: строительство и дальнейшая эксплуатация многоквартирного жилого дома с нежилыми помещениями, ЖК «Onix»','ТОО «АЛЬФиД»','07.09.2022'],
+[52,'ПСД для реконструкции здания аварийно-диспетчерской службы по ремонту и обслуживанию лифтов','ПК «Жанат»','16.02.2024'],
+[53,'Проектная документация: строительство жилого дома в пос. Топар по ул. Аубакирова, 12','ТОО «РемСпецСтрой»','27.08.2024'],
+[54,'Корректировка проектной документации: многоквартирный жилой комплекс с нежилыми помещениями, мкрн. «Оазис», г. Караганда','ТОО «Eurasia Building British»','22.10.2024'],
+[55,'Корректировка проектной документации: многоэтажный жилой дом с нежилыми помещениями, мкрн. Панель-Центр, г. Караганда','ТОО «Comfort Innovations»','26.11.2024'],
+[56,'Комплекс разделов рабочего проекта: строительство канализационных очистных сооружений в г. Косшы','ТОО «ИНЖВНЕШСТРОЙ»','15.09.2025'],
+[57,'Проектные работы: строительство школы на 280 мест, г. Караганда, ул. Гапеева','ТОО «Өрақ»','15.09.2025'],
+[58,'Авторский надзор: ЖК «Комфортный дом в Новом городе 3», г. Караганда','ТОО «Comfort Solutions»','26.01.2026']
+];
+
+const body = document.getElementById('registryBody');
+const search = document.getElementById('search');
+const year = document.getElementById('year');
+const count = document.getElementById('count');
+
+[...new Set(rows.map(r => r[3].slice(-4)))].sort((a, b) => b - a).forEach(y => {
+  year.insertAdjacentHTML('beforeend', `<option value="${y}">${y}</option>`);
+});
+
+function render() {
+  const q = search.value.trim().toLowerCase();
+  const y = year.value;
+  const filtered = rows.filter(r =>
+    (y === 'all' || r[3].endsWith(y)) &&
+    (!q || r[1].toLowerCase().includes(q) || r[2].toLowerCase().includes(q))
+  );
+  
+  body.innerHTML = filtered.map((r, i) => `
+    <tr style="animation-delay:${Math.min(i * 0.02, 0.5)}s">
+      <td class="num">${String(r[0]).padStart(2, '0')}</td>
+      <td><strong>${r[1]}</strong></td>
+      <td>${r[2]}</td>
+      <td class="date">${r[3]}</td>
+    </tr>
+  `).join('');
+  
+  if (filtered.length === rows.length) {
+    count.textContent = '50+';
+  } else {
+    count.textContent = filtered.length;
+  }
+}
+
+search.addEventListener('input', render);
+year.addEventListener('change', render);
+render();
+
+const menu = document.querySelector('.menu');
+const nav = document.querySelector('.nav');
+menu.addEventListener('click', () => {
+  nav.classList.toggle('open');
+  menu.classList.toggle('active');
+});
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open');
+  menu.classList.remove('active');
+}));
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger').forEach(el => {
+  revealObserver.observe(el);
+});
+
+const counters = document.querySelectorAll('[data-count]');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      let current = 0;
+      const step = Math.max(1, Math.ceil(target / 40));
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        el.textContent = current + suffix;
+      }, 30);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => counterObserver.observe(c));
+
+const progress = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  const scrolled = (window.scrollY / h) * 100;
+  progress.style.width = scrolled + '%';
+  
+  const header = document.getElementById('header');
+  if (window.scrollY > 20) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+});
+
+const heroImg = document.querySelector('.hero-media > img');
+window.addEventListener('scroll', () => {
+  if (window.scrollY < 800 && heroImg) {
+    heroImg.style.transform = `translateY(${window.scrollY * 0.08}px)`;
+  }
+});
+
+// ===== CONTACT FORM → FORMSPREE =====
+const form = document.getElementById('contactForm');
+const formSuccess = document.getElementById('formSuccess');
+const resetBtn = document.getElementById('resetForm');
+const submitBtn = form.querySelector('button[type="submit"]');
+
+function validateField(field) {
+  const input = field.querySelector('input');
+  const value = input.value.trim();
+  let valid = true;
+
+  if (input.hasAttribute('required') && !value) valid = false;
+  if (input.type === 'email' && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) valid = false;
+  if (input.type === 'tel' && value && !/^[\d\s\+\-\(\)]{7,}$/.test(value)) valid = false;
+
+  field.classList.toggle('error', !valid);
+  return valid;
+}
+
+form.querySelectorAll('.form-field input').forEach(input => {
+  input.addEventListener('input', () => {
+    const field = input.closest('.form-field');
+    if (field) validateField(field);
+  });
+  input.addEventListener('blur', () => {
+    const field = input.closest('.form-field');
+    if (field) validateField(field);
+  });
+});
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  let allValid = true;
+  form.querySelectorAll('.form-field').forEach(field => {
+    if (!validateField(field)) allValid = false;
+  });
+
+  if (!allValid) {
+    const firstError = form.querySelector('.form-field.error');
+    if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  const originalText = submitBtn.innerHTML;
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = 'Отправка…';
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      formSuccess.classList.add('show');
+      form.reset();
+    } else {
+      alert('Не удалось отправить заявку. Пожалуйста, попробуйте позже или позвоните нам.');
+    }
+  } catch (error) {
+    alert('Ошибка сети. Пожалуйста, проверьте подключение к интернету.');
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalText;
+  }
+});
+
+resetBtn.addEventListener('click', () => {
+  form.reset();
+  form.querySelectorAll('.form-field').forEach(f => f.classList.remove('error'));
+  formSuccess.classList.remove('show');
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
